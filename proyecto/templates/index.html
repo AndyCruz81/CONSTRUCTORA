@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Luli´s Construction</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leafl et@1.7.1/dist/leaflet.css" />
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+        <link rel="shortcut icon" href="../static/img/2696Contruct.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <link rel="stylesheet" href="../static/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a href="/">Inicio</a>
+                <a href="/portafolio">Nosotros</a>
+                <a href="/servicios">Servicios</a>
+                <a href="/proyectos">Proyectos</a>
+                <a href="/contacto">Contacto</a>
+
+                {% if session["user_id"] and not session["is_admin"] %}
+                <a href="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                {% endif %}
+
+                {% if session["user_id"] and session["is_admin"] %}
+                <a href="/admin">
+                    <i class="fas fa-tachometer-alt"></i>
+                </a>
+                {% endif %}
+
+                {% if not session["user_id"] %}
+                <a href="/Register">
+                    <i class="fas fa-user"></i>
+                </a>
+                {% endif %}
+
+                {% if session["user_id"] %}
+                <a href="/logOut">
+                    <i class='fas fa-power-off' style='font-size:16px'></i>
+                </a>
+                {% endif %}
+            </nav>
+            <section class="textos-header">
+                <h1>Somos Luli´s Construction S.A</h1>
+                <h2>“Juntos, construyamos tu futuro”</h2>
+            </section>
+            <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150"
+                    preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                    <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                        style="stroke: none; fill: #fff;"></path>
+                </svg></div>
+        </header>
+        <main>
+            <section class="contenedor sobre-nosotros">
+                <h2 class="titulo">¿ Que Hacemos ?</h2>
+                <div class="contenedor-sobre-nosotros">
+                    <img src="../static/img/Contruct.png" alt="" class="imagen-about-us">
+                    <div class="contenido-textos">
+                        <h3><span>1</span>Constructora Luli´s</h3>
+                        <p>Luli's Construction es una empresa constructora establecida en Nicaragua con más de 10 años
+                            de
+                            experiencia en el mercado.
+                            Ofrece una amplia gama de servicios de construcción. En Luli's Construction estamos
+                            comprometidos a proporcionaEn Luli´s se ofrecen una amplia variedad de servicios que incluyen diseño, planificación,
+                            construcción,
+                            supervisión, carreteras, techos y mantenimiento de proyectos de construcción residenciales,
+                            comerciales e industriales.r
+                            servicios de construcción de alta calidad a nuestros clientes. Nuestra misión es satisfacer
+                            las
+                            necesidades de nuestros
+                            clientes a través de un enfoque centrado en la calidad</p>
+
+                        <h3><span>2</span>Ofrecemos</h3>
+                        <p>En Luli´s se ofrecen una amplia variedad de servicios que incluyen diseño, planificación, construcción, supervisión, carreteras, techos y mantenimiento de proyectos de construcción residenciales, comerciales e industriales.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="portafolio">
+                <div class="contenedor">
+                    <h2 class="titulo">Servicios</h2>
+                    <div class="galeria-port">
+                        <div class="imagen-port">
+                            <img src="../static/img/img1.jpeg" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img2.jpg" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img3.jfif" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img6.jpg" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img5.jpg" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img4.jfif" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img7.jpg" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                        <div class="imagen-port">
+                            <img src="../static/img/img8.jpg" alt="">
+                            <div class="hover-galeria">
+                                <img src="../static/img/icono1.png" alt="">
+                                <p>Nuestro trabajo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="clientes contenedor">
+                <h2 class="titulo">Proyectos</h2>
+                <div class="cards">
+                    <div class="card">
+                        <img src="../static/img/proyectos1.jpg" alt="">
+                        <div class="contenido-texto-card">
+                            <h4>Hotel Bussin</h4>
+                            <p>Mejoras al Hotel en temporadas de lluvia, aumento de terraza y alquiler de maquinaria.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../static/img/proyectos2.jpg" alt="">
+                        <div class="contenido-texto-card">
+                            <h4>Techos Cazona</h4>
+                            <p>Cambio de Techo y entechado de terraza para el restaurante casa hotel Cazona.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../static/img/proyectos3.jpg" alt="">
+                        <div class="contenido-texto-card">
+                            <h4>Seminole</h4>
+                            <p>Medicion de terrenos para Seminole, levantamiento de medidas terrestres.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../static/img/proyectos4.jpg" alt="">
+                        <div class="contenido-texto-card">
+                            <h4>Mozonte</h4>
+                            <p>Adaptacion al motel Mozonte, alquiler de maquinaria pesada.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="about-services">
+                <div class="contenedor">
+                    <h2 class="titulo">Encuentranos</h2>
+                    <div class="mapa">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7800.7838239066605!2d-86.19308711140538!3d12.153699540770594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fc173591fc55%3A0x65b598ad66f333ce!2sLas%20Mercedes%2C%20Managua!5e0!3m2!1ses!2sni!4v1687144709903!5m2!1ses!2sni"
+                            width="70%" height="600"
+                            style="border:0; justify-content: center; align-items: center; display: flex; border-radius: 5px;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <img src="../static/img/Contruct.png" alt="" class="logo">
+            <div class="social-icons-container">
+                <a href="../static/img/InstagramBlanco.png" class="social-icon"></a>
+                <a href="../static/img/FacebookBlanco.png" class="social-icon"></a>
+                <a href="../static/img/LinkedinBlanco.png" class="social-icon"></a>
+                <a href="../static/img/TwitterBlanco.png" class="social-icon"></a>
+            </div>
+            <ul class="footer-menu-container">
+                <li class="menu-item">Legal</li>
+                <li class="menu-item">Cookies</li>
+                <li class="menu-item">Privacy</li>
+                <li class="menu-item">Shipping</li>
+                <li class="menu-item">Refunds</li>
+            </ul>
+            <span class="copyright">&copy;2023, Andy Cruz. All rights reserved.</span>
+        </footer>
+    </body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Luli´s Construction: CART</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+        <link rel="shortcut icon" href="../static/img/2696Contruct.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <link rel="stylesheet" href="../static/stylesCar.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    </head>
+
+    <body>
+        <main>
+            <h2 class="titulo">
+                <a href="/">
+                    <i class="fas fa-arrow-left back-arrow flecha"></i>
+                </a>
+                <span class="contenido">
+                    <i class="fas fa-shopping-cart"></i>
+                    Carrito de Compras
+                </span>
+            </h2>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-primary mb-0 text-center mb-5" role="alert">
+                {{ messages | join(" ") }}
+            </div>
+            {% endif %}
+            {% endwith %}
+            <div class="table-container ">
+                <table class="table table-bordered table-striped ">
+                    <thead >
+                        <tr>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in carrito %}
+                        <tr>
+                            <td>{{ row.nombre }}</td>
+                            <td>{{ row.descripcion }}</td>
+                            <td>{{ row.precio }}</td>
+                            <td>{{ row.fecha }}</td>
+                            <td>
+                                <button class="btn btn-danger eliminar-btn" data-id="{{ row.id }}">Eliminar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+        <footer class="d-flex justify-content-center align-items-center">
+            <img src="../static/img/Contruct.png" alt="" class="logo">
+            <div class="social-icons-container">
+                <a href="../static/InstagramBlanco.png" class="social-icon"></a>
+                <a href="../static/FacebookBlanco.png" class="social-icon"></a>
+                <a href="../static/LinkedinBlanco.png" class="social-icon"></a>
+                <a href="../static/TwitterBlanco.png" class="social-icon"></a>
+            </div>
+            <ul class="footer-menu-container">
+                <li class="menu-item">Legal</li>
+                <li class="menu-item">Cookies</li>
+                <li class="menu-item">Privacy</li>
+                <li class="menu-item">Shipping</li>
+                <li class="menu-item">Refunds</li>
+            </ul>
+            <span class="copyrigh">&copy;2023, Andy Cruz. All rights reserved.</span>
+        </footer>
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            var eliminarButtons = document.querySelectorAll('.eliminar-btn');
+            eliminarButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var transaccionId = button.dataset.id;
+                    eliminarTransaccion(transaccionId);
+                });
+            });
+
+            function eliminarTransaccion(transaccionId) {
+                fetch('/eliminar-transaccion/' + transaccionId, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(function(response) {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Error al eliminar la transacción');
+                        }
+                    })
+                    .then(function(data) {
+                        console.log(data.message); // Mostrar el mensaje de éxito en la consola
+                        location.reload(); // Recargar la página después de eliminar la transacción
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+            }
+        </script>
+
+        <!-- la transacción correspondiente se eliminará de la base de datos cuando se haga
+            clic en el botón "Eliminar". Además, recibirás una respuesta JSON con un mensaje
+            de éxito y la página se recargará para mostrar los cambios actualizados en el carrito. -->
+
+
+
+    </body>
+
+</html>

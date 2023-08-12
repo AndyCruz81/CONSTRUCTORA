@@ -1,0 +1,39 @@
+---- ESTRUCTURA_BD ----
+
+usuarios(
+ID PK,
+nombre,
+correo,
+contraseña,
+es_admin
+)
+
+servicios(
+ID PK,
+nombre,
+descripcion,
+precio
+)
+
+transacciones(
+ID PK,
+usuario_id FK,
+servicio_id FK,
+fecha
+
+
+
+   ---- SEGURIDAD CONTRASEÑA ----
+se utiliza la función bcrypt.checkpw()
+ utilizando la biblioteca bcrypt, para
+ verificar si la contraseña ingresada
+coincide con la contraseña almacenada
+        en la base de datos.
+
+
+   ---- TEMPLATE CART BTN ELIMINAR ----
+Cuando se haga clic en el botón "Eliminar",
+se enviará una solicitud DELETE al servidor,
+se eliminará la transacción correspondiente
+en la base de datos y se recargará la página
+para mostrar la lista actualizada de transacciones.

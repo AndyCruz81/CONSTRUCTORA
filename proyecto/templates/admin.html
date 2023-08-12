@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Luli´s Construction: ADMIN</title>
+        <link rel="stylesheet" href="../static/stylesadmin.css">
+        <link rel="shortcut icon" href="../static/img/2696Contruct.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <nav>
+            <div class="wrapper">
+                <div class="logo">
+                    <a href="#">ADMINISTRADOR</a>
+                </div>
+                <ul class="nav_links">
+                    <label for="cancel_btn" class="btn cancel_btn">
+                        <i class="fas fa-times"></i>
+                    </label>
+                    <li><a href="/">Volver</a></li>
+                    <li><a href="/dashboard">DASHBOARD</a></li>
+                    <li>
+                        <a href="#" class="desktop_item">Mega Menu</a>
+                        <label for="showMega" class="mobile_item">Mega Menu</label>
+                        <div class="mega_box">
+                            <div class="content">
+                                <div class="row img_row">
+                                    <div class="services_img"></div>
+                                </div>
+                                <div class="row">
+                                    <header>Reproducir un video</header>
+                                    <div class="input-container">
+                                        <div class="input-container">
+                                            <input type="file" id="video-file" accept="video/*"
+                                                onchange="handleVideoChange(event)">
+                                            <label class="btn-select" for="video-file">Seleccionar video</label>
+                                            <p class="file-name" id="video-file-name">No se ha seleccionado ningún
+                                                archivo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <header>Reproducir Audio</header>
+                                    <div class="input-container">
+                                        <input type="file" id="audio-file" accept="audio/*"
+                                            onchange="handleAudioChange(event)">
+                                        <label class="btn-select" for="audio-file">Seleccionar audio</label>
+                                        <p class="file-name" id="audio-file-name">No se ha seleccionado ningún archivo
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <label for="menu_btn" class="btn menu_btn">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </div>
+        </nav>
+        <main>
+            <div id="video-container" class="video-container">
+                <h1>REPRODUCTOR DE VIDEO</h1>
+                <video id="video-player" controls></video>
+            </div>
+
+            <div id="audio-container" class="audio-container">
+                <h1>REPRODUCTOR DE AUDIO</h1>
+                <audio id="audio-player" controls></audio>
+            </div>
+
+            <div id="audio-container"></div>
+        </main>
+        <script>
+            function handleVideoChange(event) {
+                const file = event.target.files[0];
+                const videoPlayer = document.getElementById('video-player');
+                const videoContainer = document.getElementById('video-container');
+                const fileNameText = document.getElementById('video-file-name');
+
+                if (file) {
+                    videoPlayer.src = URL.createObjectURL(file);
+                    fileNameText.textContent = file.name;
+                    videoContainer.style.display = 'block';
+                } else {
+                    videoPlayer.src = '';
+                    fileNameText.textContent = 'No se ha seleccionado ningún archivo';
+                    videoContainer.style.display = 'none';
+                }
+            }
+
+            function handleAudioChange(event) {
+                const file = event.target.files[0];
+                const audioPlayer = document.getElementById('audio-player');
+                const audioContainer = document.getElementById('audio-container');
+                const fileNameText = document.getElementById('audio-file-name');
+
+                if (file) {
+                    audioPlayer.src = URL.createObjectURL(file);
+                    fileNameText.textContent = file.name;
+                    audioContainer.style.display = 'block';
+                } else {
+                    audioPlayer.src = '';
+                    fileNameText.textContent = 'No se ha seleccionado ningún archivo';
+                    audioContainer.style.display = 'none';
+                }
+            }
+
+        </script>
+    </body>
+
+</html>

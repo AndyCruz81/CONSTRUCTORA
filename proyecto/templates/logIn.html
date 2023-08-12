@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/stylesLogin.css">
+        <title>Luli´s LogIn</title>
+        <link rel="shortcut icon" href="../static/img/2696Contruct.ico" type="image/x-icon">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".flash-messages").delay(1500 ).fadeOut("slow");
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="container-page">
+            <h1 class="title">Iniciar Sesión</h1>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <form action="/logIn" method="post">
+                <div class="input-line-container">
+                    <span class="name-input">Nombre de usuario</span>
+                    <input type="text" name="username" class="input-line">
+                </div>
+                <div class="input-line-container">
+                    <span class="name-input">Contraseña</span>
+                    <input type="password" name="password" class="input-line">
+                </div>
+                <button class="button-login button-register" type="submit">Acceder</button>
+                <p class="redirect-link">¿No tienes una cuenta? <a href="/Register">Registrate</a></p>
+            </form>
+        </div>
+
+        <footer>
+            <img src="../static/img/Contruct.png" alt="" class="logo">
+            <div class="social-icons-container">
+                <a href="../static/img/InstagramBlanco.png" class="social-icon"></a>
+                <a href="../static/img/FacebookBlanco.png" class="social-icon"></a>
+                <a href="../static/img/LinkedinBlanco.png" class="social-icon"></a>
+                <a href="../static/img/TwitterBlanco.png" class="social-icon"></a>
+            </div>
+            <ul class="footer-menu-container">
+                <li class="menu-item">Legal</li>
+                <li class="menu-item">Cookies</li>
+                <li class="menu-item">Privacy</li>
+                <li class="menu-item">Shipping</li>
+                <li class="menu-item">Refunds</li>
+            </ul>
+            <span class="copyright">&copy;2023, Andy Cruz. All rights reserved.</span>
+        </footer>
+    </body>
+    </body>
+
+</html>

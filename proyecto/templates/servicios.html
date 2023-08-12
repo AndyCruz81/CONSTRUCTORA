@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Luli´s Construction: SERVICIOS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <link rel="shortcut icon" href="../static/img/2696Contruct.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="../static/stylesServi.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="/portafolio">Nosotros</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/proyectos">Proyectos</a>
+        <a href="/contacto">Contacto</a>
+
+        {% if session["user_id"] and not session["is_admin"] %}
+        <a href="/cart">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+        {% endif %}
+
+        {% if session["user_id"] and session["is_admin"] %}
+        <a href="/admin">
+            <i class="fas fa-tachometer-alt"></i>
+        </a>
+        {% endif %}
+
+        {% if not session["user_id"] %}
+        <a href="/Register">
+            <i class="fas fa-user"></i>
+        </a>
+        {% endif %}
+
+        {% if session["user_id"] %}
+        <a href="/logOut">
+            <i class='fas fa-power-off' style='font-size:16px'></i>
+        </a>
+        {% endif %}
+    </nav>
+      <section class="textos-header">
+        <h1>Con Los Mejores Servicios del Mercado..</h1>
+        <h2>“Juntos, construyamos tu futuro”</h2>
+      </section>
+      <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+          style="height: 100%; width: 100%;">
+          <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: #fff;"></path>
+        </svg></div>
+    </header>
+    <main>
+      <h2 class="titulo">Servicios</h2>
+      <div class="our-team-section">
+
+
+        <div class="member-container">
+          <h3 class="member-name">Diseño y Planificación</h3>
+          <p class="member-description"> Luli's Construction cuenta con profesionales capacitados en arquitectura
+            y diseño para crear proyectos personalizados según las necesidades y deseos de los clientes.</p>
+          <a href="" data-bs-toggle="modal" data-bs-target="#modal1" class="button">$BUY$</a>
+          <div class="socials-container">
+            <!-- <img src="../static/img/FacebookBlanco.png" alt="" class="icon">
+                    <img src="../static/img/InstagramBlanco.png" alt="" class="icon">
+                    <img src="../static/img/LinkedinBlanco.png" alt="" class="icon">
+                    <img src="../static/img/TwitterBlanco.png" alt="" class="icon"> -->
+          </div>
+        </div>
+
+        <form action="/cart" method="post">
+          <!-- MODAL -->
+          <!-- Agregar linea a todos los modales CON DIFERENTE ID-->
+          <input name="ser" type="hidden" value="1">
+          <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog bg-success">
+              <div class="modal-content" style="transform: scaleX(1,4);">
+                <div class="modal-header pb-2 ">
+                  <h1 class="font-weigth-ligth ml-4 ">Agregar al Carrito</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row mt-2 p-3">
+                    <div class="col-md-6">
+                      <img src="../static/img/ser1.jpg" width="100%" height="auto" alt="" class="rounded pt-3">
+                    </div>
+                    <div class="col-md-6">
+                      <h2 class="product_name"></h2>
+                      <p style="box-sizing: border-box;" class="product_desc">Trabajamos
+                        estrechamente contigo para plasmar tus ideas en diseños innovadores y funcionales. Confía en
+                        nosotros para construir el espacio que siempre has deseado".</p>
+                    </div>
+                    <div class="col-12 text-center pt-3">
+                      <p>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star ml-2"></i>
+                      </p>
+
+                      <h4 class="product_price"></h4>
+                      <button type="submit" class="btn btn-primary mt-2" style="width: 150px;">Agregar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="member-container">
+          <h3 class="member-name">Construcción de Viviendas</h3>
+          <p class="member-description">La empresa se especializa en la construcción de casas tanto individuales
+            como para múltiples familias, brindando atención a los detalles y garantizando la calidad en cada
+            etapa del proceso.</p>
+          <a href="" data-bs-toggle="modal" data-bs-target="#modal2" class="button">$BUY$</a>
+          <div class="socials-container">
+            <!-- <img src="../static/img/FacebookBlanco.png" alt="" class="icon">
+                    <img src="../static/img/InstagramBlanco.png" alt="" class="icon">
+                    <img src="../static/img/LinkedinBlanco.png" alt="" class="icon">
+                    <img src="../static/img/TwitterBlanco.png" alt="" class="icon"> -->
+          </div>
+        </div>
+        <form action="/cart" method="post">
+          <!-- MODAL -->
+          <!-- Agregar linea a todos los modales CON DIFERENTE ID-->
+          <input name="ser" type="hidden" value="2">
+          <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog bg-success">
+              <div class="modal-content" style="transform: scaleX(1,4);">
+                <div class="modal-header pb-2 ">
+                  <h1 class="font-weigth-ligth ml-4 ">Agregar al Carrito</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row mt-2 p-3">
+                    <div class="col-md-6">
+                      <img src="../static/img/ser2.jpg" width="100%" height="auto" alt="" class="rounded pt-3">
+                    </div>
+                    <div class="col-md-6">
+                      <h2 class="product_name"></h2>
+                      <p style="box-sizing: border-box;" class="product_desc">Nuestro equipo de expertos se encarga
+                        de materializar tus sueños arquitectónicos, creando hogares personalizados que se adaptan
+                        a tus necesidades y estilo de vida.</p>
+                    </div>
+                    <div class="col-12 text-center pt-3">
+                      <p>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star ml-2"></i>
+                      </p>
+
+                      <h4 class="product_price"></h4>
+                      <button type="submit" class="btn btn-primary mt-2" style="width: 150px;">Agregar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+        <div class="member-container">
+          <h3 class="member-name">Edificios y Oficinas</h3>
+          <p class="member-description"> Luli's Construction tiene experiencia en la construcción de edificios
+            comerciales y de oficinas</p>
+          <a href="" class="button" data-bs-toggle="modal" data-bs-target="#modal3">$BUY$</a>
+          <div class="socials-container">
+            <!-- <img src="../static/img/FacebookBlanco.png" alt="" class="icon">
+                    <img src="../static/img/InstagramBlanco.png" alt="" class="icon">
+                    <img src="../static/img/LinkedinBlanco.png" alt="" class="icon">
+                    <img src="../static/img/TwitterBlanco.png" alt="" class="icon"> -->
+          </div>
+        </div>
+        <!-- MODAL -->
+        <form action="/cart" method="post">
+          <!-- MODAL -->
+          <!-- Agregar linea a todos los modales CON DIFERENTE ID-->
+          <input name="ser" type="hidden" value="3">
+          <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog bg-success">
+              <div class="modal-content" style="transform: scaleX(1,4);">
+                <div class="modal-header pb-2 ">
+                  <h1 class="font-weigth-ligth ml-4 ">Agregar al Carrito</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row mt-2 p-3">
+                    <div class="col-md-6">
+                      <img src="../static/img/ser3.jpg" width="100%" height="auto" alt="" class="rounded pt-3">
+                    </div>
+                    <div class="col-md-6">
+                      <h2 class="product_name"></h2>
+                      <p style="box-sizing: border-box;" class="product_desc">Nuestro equipo altamente capacitado se encarga
+                        de crear espacios modernos y funcionales que se adaptan a las necesidades de tu negocio.</p>
+                    </div>
+                    <div class="col-12 text-center pt-3">
+                      <p>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star ml-2"></i>
+                      </p>
+
+                      <h4 class="product_price"></h4>
+                      <button type="submit" class="btn btn-primary mt-2" style="width: 150px;">Agregar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="member-container">
+          <h3 class="member-name">Remodelación y Renovación</h3>
+          <p class="member-description">Luli's Construction realiza remodelaciones y renovaciones de espacios, ya
+            sea para actualizar y modernizar áreas existentes o para adaptarlas a nuevas necesidades y usos.</p>
+          <a href="" data-bs-toggle="modal" data-bs-target="modal4" class="button">$BUY$</a>
+          <div class="socials-container">
+            <!-- <img src="../static/img/FacebookBlanco.png" alt="" class="icon">
+                    <img src="../static/img/InstagramBlanco.png" alt="" class="icon">
+                    <img src="../static/img/LinkedinBlanco.png" alt="" class="icon">
+                    <img src="../static/img/TwitterBlanco.png" alt="" class="icon"> -->
+          </div>
+        </div>
+        <form action="/cart" method="post">
+          <!-- MODAL -->
+          <!-- Agregar linea a todos los modales CON DIFERENTE ID-->
+          <input name="ser" type="hidden" value="4">
+          <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog bg-success">
+              <div class="modal-content" style="transform: scaleX(1,4);">
+                <div class="modal-header pb-2 ">
+                  <h1 class="font-weigth-ligth ml-4 ">Agregar al Carrito</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row mt-2 p-3">
+                    <div class="col-md-6">
+                      <img src="../static/img/ser4.jpg" width="100%" height="auto" alt="" class="rounded pt-3">
+                    </div>
+                    <div class="col-md-6">
+                      <h2 class="product_name"></h2>
+                      <p style="box-sizing: border-box;" class="product_desc">Nuestro equipo especializado en
+                        remodelación se encarga de renovar y actualizar tus ambientes, brindándoles un nuevo
+                        aspecto y funcionalidad.</p>
+                    </div>
+                    <div class="col-12 text-center pt-3">
+                      <p>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star ml-2"></i>
+                      </p>
+
+                      <h4 class="product_price"></h4>
+                      <button type="submit" class="btn btn-primary mt-2" style="width: 150px;">Agregar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="member-container">
+          <h3 class="member-name">Construcción de Piscinas</h3>
+          <p class="member-description">La empresa se encarga de la construcción de piscinas y áreas de
+            entretenimiento al aire libre, brindando opciones personalizadas para crear espacios de recreación y
+            relajación.</p>
+          <a href="" data-bs-toggle="modal" data-bs-target="#modal5" class="button">$BUY$</a>
+          <div class="socials-container">
+            <!-- <img src="../static/img/FacebookBlanco.png" alt="" class="icon">
+                    <img src="../static/img/InstagramBlanco.png" alt="" class="icon">
+                    <img src="../static/img/LinkedinBlanco.png" alt="" class="icon">
+                    <img src="../static/img/TwitterBlanco.png" alt="" class="icon"> -->
+          </div>
+        </div>
+        <form action="/cart" method="post">
+          <!-- MODAL -->
+          <!-- Agregar linea a todos los modales CON DIFERENTE ID-->
+          <input name="ser" type="hidden" value="5">
+          <div class="modal fade" id="modal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog bg-success">
+              <div class="modal-content" style="transform: scaleX(1,4);">
+                <div class="modal-header pb-2 ">
+                  <h1 class="font-weigth-ligth ml-4 ">Agregar al Carrito</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row mt-2 p-3">
+                    <div class="col-md-6">
+                      <img src="../static/img/ser5.jpg" width="100%" height="auto" alt="" class="rounded pt-3">
+                    </div>
+                    <div class="col-md-6">
+                      <h2 class="product_name"></h2>
+                      <p style="box-sizing: border-box;" class="product_desc">Nuestro equipo experto se encarga de
+                        crear espacios acuáticos únicos y funcionales, adaptados a tus preferencias y necesidades.</p>
+                    </div>
+                    <div class="col-12 text-center pt-3">
+                      <p>&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star text-warning ml-2"></i>
+                        <i class="fa fa-star ml-2"></i>
+                      </p>
+
+                      <h4 class="product_price"></h4>
+                      <button type="submit" class="btn btn-primary mt-2" style="width: 150px;">Agregar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+
+      </div>
+      <h2 class="titulo">Encuentranos</h2>
+      <div class="mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7800.7838239066605!2d-86.19308711140538!3d12.153699540770594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fc173591fc55%3A0x65b598ad66f333ce!2sLas%20Mercedes%2C%20Managua!5e0!3m2!1ses!2sni!4v1687144709903!5m2!1ses!2sni"
+          width="70%" height="600"
+          style="border:0; justify-content: center; align-items: center; display: flex; border-radius: 5px;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+
+    </main>
+
+    <footer>
+      <img src="/../static/img/Contruct.png" alt="" class="logo">
+      <div class="social-icons-container">
+        <a href="" class="social-icon"></a>
+        <a href="" class="social-icon"></a>
+        <a href="" class="social-icon"></a>
+        <a href="" class="social-icon"></a>
+      </div>
+      <ul class="footer-menu-container">
+        <li class="menu-item">Legal</li>
+        <li class="menu-item">Cookies</li>
+        <li class="menu-item">Privacy</li>
+        <li class="menu-item">Shipping</li>
+        <li class="menu-item">Refunds</li>
+      </ul>
+      <span class="copyright">&copy;2023, Andy Cruz. All rights reserved.</span>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"></script>
+  </body>
+
+</html>

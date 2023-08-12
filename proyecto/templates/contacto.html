@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Luli´s Construction: CONTACTO</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <link rel="stylesheet" href="../static/stylesCon.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="../static/img/2696Contruct.ico" type="image/x-icon">
+
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+        <script crossorigin="anonymous"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a href="/">Inicio</a>
+                <a href="/portafolio">Nosotros</a>
+                <a href="/servicios">Servicios</a>
+                <a href="/proyectos">Proyectos</a>
+                <a href="/contacto">Contacto</a>
+
+                {% if session["user_id"] and not session["is_admin"] %}
+                <a href="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                {% endif %}
+
+                {% if session["user_id"] and session["is_admin"] %}
+                <a href="/admin">
+                    <i class="fas fa-tachometer-alt"></i>
+                </a>
+                {% endif %}
+
+                {% if not session["user_id"] %}
+                <a href="/Register">
+                    <i class="fas fa-user"></i>
+                </a>
+                {% endif %}
+
+                {% if session["user_id"] %}
+                <a href="/logOut">
+                    <i class='fas fa-power-off' style='font-size:16px'></i>
+                </a>
+                {% endif %}
+            </nav>
+
+
+            <section class="textos-header">
+                <h1>Contactate Con Nosotros</h1>
+                <h2>Envia Tu CV Para Formar Parte</h2>
+            </section>
+            <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150"
+                    preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                    <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                        style="stroke: none; fill: #fff;"></path>
+                </svg></div>
+        </header>
+
+        <main>
+            <h2 class="titulo">Contactanos</h2>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {% if 'success' in message %}alert-success{% elif 'error' in message %}alert-danger{% else %}alert-primary{% endif %} mb-0 text-center"
+                role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form action="/contacto" method="POST" class="register-form">
+                <div class="input-line">
+                    <label class="label-form" for="name">Nombre</label>
+                    <input name="nombre" type="text" class="input-field" placeholder="Escribe tu nombre">
+                </div>
+                <div class="input-line">
+                    <label class="label-form" for="name">Apellido</label>
+                    <input name="apellido" type="text" class="input-field" placeholder="Escribe tus apellidos">
+                </div>
+                <div class="input-line">
+                    <label class="label-form" for="name">Correo</label>
+                    <input name="correo" type="email" class="input-field" placeholder="Escribe tu email de contacto">
+                </div>
+                <div class="input-line">
+                    <label class="label-form" for="name">Telefono</label>
+                    <input name="telefono" type="number" class="input-field" placeholder="Escribe tu Telefono">
+                </div>
+                <div class="input-line">
+                    <label class="label-form mensaje" for="name">Mensaje</label>
+                    <input name="mensaje" id="mensaje" type="text" class="input-fieldmensaje"
+                        placeholder="Escribe un Mensaje...">
+                </div>
+                <button type="submit" class="button-form">Enviar</button>
+            </form>
+
+            <h2 class="titulo" style="padding-top: 10px; margin-top: 40px;">Encuentranos</h2>
+            <div class="mapa">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7800.7838239066605!2d-86.19308711140538!3d12.153699540770594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73fc173591fc55%3A0x65b598ad66f333ce!2sLas%20Mercedes%2C%20Managua!5e0!3m2!1ses!2sni!4v1687144709903!5m2!1ses!2sni"
+                    width="70%" height="600"
+                    style="border:0; justify-content: center; align-items: center; display: flex; border-radius: 5px;"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+
+        </main>
+        <footer>
+            <img src="../static/img/Contruct.png" alt="" class="logo">
+            <div class="social-icons-container">
+                <a href="../static/img/InstagramBlanco.png" class="social-icon"></a>
+                <a href="../static/img/FacebookBlanco.png" class="social-icon"></a>
+                <a href="../static/img/LinkedinBlanco.png" class="social-icon"></a>
+                <a href="../static/img/TwitterBlanco.png" class="social-icon"></a>
+            </div>
+            <ul class="footer-menu-container">
+                <li class="menu-item">Legal</li>
+                <li class="menu-item">Cookies</li>
+                <li class="menu-item">Privacy</li>
+                <li class="menu-item">Shipping</li>
+                <li class="menu-item">Refunds</li>
+            </ul>
+            <span class="copyright">&copy;2023, Andy Cruz. All rights reserved.</span>
+        </footer>
+
+
+    </body>
+
+
+</html>
