@@ -1,39 +1,65 @@
----- ESTRUCTURA_BD ----
+blinker==1.7.0
+cachelib==0.12.0
+certifi==2024.2.2
+charset-normalizer==3.3.2
+click==8.1.7
+colorama==0.4.6
+cs50==9.3.4
+Flask==3.0.2
+Flask-Mail==0.9.1
+Flask-Session==0.8.0
+greenlet==3.0.3
+idna==3.6
+itsdangerous==2.1.2
+Jinja2==3.1.3
+MarkupSafe==2.1.5
+msgspec==0.18.6
+packaging==24.0
+requests==2.31.0
+SQLAlchemy==2.0.29
+sqlparse==0.4.4
+termcolor==2.4.0
+typing_extensions==4.10.0
+urllib3==2.2.1
+Werkzeug==3.0.1
+wheel==0.43.0
 
-usuarios(
-ID PK,
-nombre,
-correo,
-contraseña,
-es_admin
-)
+# ---- ESTRUCTURA_BD ----
 
-servicios(
-ID PK,
-nombre,
-descripcion,
-precio
-)
+# usuarios(
+# ID PK,
+# nombre,
+# correo,
+# contraseña,
+# es_admin
+# )
 
-transacciones(
-ID PK,
-usuario_id FK,
-servicio_id FK,
-fecha
+# servicios(
+# ID PK,
+# nombre,
+# descripcion,
+# precio
+# )
 
-
-
-   ---- SEGURIDAD CONTRASEÑA ----
-se utiliza la función bcrypt.checkpw()
- utilizando la biblioteca bcrypt, para
- verificar si la contraseña ingresada
-coincide con la contraseña almacenada
-        en la base de datos.
+# transacciones(
+# ID PK,
+# usuario_id FK,
+# servicio_id FK,
+# fecha
 
 
-   ---- TEMPLATE CART BTN ELIMINAR ----
-Cuando se haga clic en el botón "Eliminar",
-se enviará una solicitud DELETE al servidor,
-se eliminará la transacción correspondiente
-en la base de datos y se recargará la página
-para mostrar la lista actualizada de transacciones.
+
+#    ---- SEGURIDAD CONTRASEÑA ----
+# se utiliza la función bcrypt.checkpw()
+#  utilizando la biblioteca bcrypt, para
+#  verificar si la contraseña ingresada
+# coincide con la contraseña almacenada
+#         en la base de datos.
+
+
+#    ---- TEMPLATE CART BTN ELIMINAR ----
+# Cuando se haga clic en el botón "Eliminar",
+# se enviará una solicitud DELETE al servidor,
+# se eliminará la transacción correspondiente
+# en la base de datos y se recargará la página
+# para mostrar la lista actualizada de transacciones.

@@ -37,7 +37,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///constructora.db")
+db = SQL("sqlite:///proyecto/constructora.db")
 
 # Rutas de la aplicación
 
@@ -301,3 +301,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
